@@ -23,13 +23,13 @@ app.get('/api/scrape', async (req, res) => {
             timeout: 7000
         });
 
-        const \$ = cheerio.load(response.data);
+        const $ = cheerio.load(response.data);
 
-        \$('script, style, nav, footer, header, iframe, noscript, .ads, #sidebar, .menu, .banner').remove();
+        $('script, style, nav, footer, header, iframe, noscript, .ads, #sidebar, .menu, .banner').remove();
 
         let cleanText = [];
-        \$('h1, h2, h3, p').each((i, el) => {
-            const text = \$(el).text().trim();
+        $('h1, h2, h3, p').each((i, el) => {
+            const text = $(el).text().trim();
             if (text.length > 15) {
                 cleanText.push(text);
             }
